@@ -3,30 +3,19 @@ package ru.stqa.pft.sandbox;
 public class MyFirstProgram {
 
     public static void main(String[] args) {
-        hello("Alex");
-        hello("Lara");
-        hello("Tim");
-        System.out.println();
+        hello("User1");
+        hello("User2");
+        hello("User3");
 
-        double l = 5;
-        System.out.println("Area of square with side 5 = " + squareArea(l));
-        System.out.println();
+        Square square = new Square(5);
+        System.out.println("Area of square with side " + square.l + " = " + square.squareArea());
 
-        double a = 4;
-        double b = 6;
-        System.out.println("Area of rectangle with sides " + a + " and " + b + " = " + rectangleArea(a, b));
+        Rectangle rectangle = new Rectangle(4, 6);
+        System.out.println("Area of rectangle with sides " + rectangle.a + " and " + rectangle.b + " = " + rectangle.rectangleArea());
     }
 
     public static void hello(String word) {
         System.out.println("Hello, " + word + "!");
-    }
-
-    public static double squareArea(double l) {
-        return l * l;
-    }
-
-    public static double rectangleArea(double a, double b) {
-        return (a * b);
     }
 }
 
