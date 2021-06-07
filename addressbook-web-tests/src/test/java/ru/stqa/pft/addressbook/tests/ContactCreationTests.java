@@ -16,7 +16,7 @@ public class ContactCreationTests extends TestBase {
                 "Mr",
                 "Test Company",
                 "Test address, 1, 3-4",
-                "111111111111",
+                "11111111111",
                 "22222222222",
                 "33333333333",
                 "44444444444",
