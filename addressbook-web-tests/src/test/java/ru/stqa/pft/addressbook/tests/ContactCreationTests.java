@@ -26,8 +26,9 @@ public class ContactCreationTests extends TestBase {
                 "www.test-test123456789.net",
                 "Test address, 2, 5-6",
                 "55555555555",
-                "Test notes here!1234567890"
-        ));
+                "Test notes here!1234567890",
+                "test1"
+        ), true);
         app.getContactHelper().submitContactCreation();
         app.getNavigationHelper().goHomePage();
     }

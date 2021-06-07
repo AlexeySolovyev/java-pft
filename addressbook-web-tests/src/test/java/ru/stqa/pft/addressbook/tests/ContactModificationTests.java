@@ -28,8 +28,9 @@ public class ContactModificationTests extends TestBase {
                 "www.test-test2222222.org",
                 "Test address, 22, 52-62",
                 "66666666666",
-                "Test notes here!987654321"
-        ));
+                "Test notes here!987654321",
+                null
+        ), false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().goHomePage();
     }
