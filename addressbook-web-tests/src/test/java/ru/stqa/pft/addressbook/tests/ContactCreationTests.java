@@ -6,15 +6,15 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactCreationTests extends TestBase {
 
     @Test
-    public void testShortContactCreation() {
+    public void testContactCreation() {
         app.getNavigationHelper().goToContactPage();
         app.getContactHelper().fillContactForm(new ContactData(
-                "Firstname1",
-                "Middlename1",
-                "Lastname1",
+                "First name1",
+                "Middle name1",
+                "Last name1",
                 "Nick",
                 "Mr",
-                "TestCompany",
+                "Test Company",
                 "Test address, 1, 3-4",
                 "111111111111",
                 "22222222222",
@@ -24,11 +24,11 @@ public class ContactCreationTests extends TestBase {
                 "test2@mail.net",
                 "test3@mail.net",
                 "www.test-test123456789.net",
-                "Test adress, 2, 5-6",
+                "Test address, 2, 5-6",
                 "55555555555",
                 "Test notes here!1234567890"
         ));
         app.getContactHelper().submitContactCreation();
-        app.getContactHelper().returnHomePage();
+        app.getNavigationHelper().goHomePage();
     }
 }

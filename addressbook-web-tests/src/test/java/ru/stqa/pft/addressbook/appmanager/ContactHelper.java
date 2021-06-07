@@ -29,14 +29,17 @@ public class ContactHelper extends HelperBase {
         type(By.name("address2"), contactData.getSecondaryAdress());
         type(By.name("phone2"), contactData.getSecondaryPhone());
         type(By.name("notes"), contactData.getNotes());
-
     }
 
     public void submitContactCreation() {
         click(By.name("submit"));
     }
 
-    public void returnHomePage() {
-        click(By.linkText("home"));
+    public void initContactModification() {
+        click(By.cssSelector("img[alt='Edit']"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
     }
 }
