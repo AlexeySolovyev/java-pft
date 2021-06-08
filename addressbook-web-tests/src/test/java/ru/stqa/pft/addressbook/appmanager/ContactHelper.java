@@ -5,6 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends BaseHelper {
 
@@ -29,7 +30,7 @@ public class ContactHelper extends BaseHelper {
         type(By.name("email3"), contactData.getEmail3());
         type(By.name("homepage"), contactData.getHomePage());
 
-        if(creation) {
+        if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); // drop-down control for Group adding
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -53,6 +54,42 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void deleteContact() {
-        click(By.cssSelector("[value=\"Delete\"]"));
+        click(By.cssSelector("[value='Delete']"));
+    }
+
+    public boolean isThereContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void goToContactPage() {
+        click(By.linkText("add new"));
+    }
+
+    public void createReserveContact(ContactData contact) {
+        goToContactPage();
+        fillContactForm(new ContactData(
+                "First name1",
+                "Middle name1",
+                "Last name1",
+                "Nick",
+                "Mr",
+                "Test Company",
+                "Test address, 1, 3-4",
+                "11111111111",
+                "22222222222",
+                "33333333333",
+                "44444444444",
+                "test1@mail.net",
+                "test2@mail.net",
+                "test3@mail.net",
+                "www.test-test123456789.net",
+                "Test address, 2, 5-6",
+                "55555555555",
+                "Test notes here!1234567890",
+                "test1"
+        ), true);
+        submitContactCreation();
+
     }
 }
+

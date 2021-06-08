@@ -10,7 +10,7 @@ public class GroupModificationTests extends TestBase {
         app.getNavigationHelper().gotoGroupPage();
 
         if (! app.getGroupHelper().isThereGroup()) {
-            app.getGroupHelper().createGroup(new GroupData("test1", null, null)); //if no existing group, Test will create it for modification
+            app.getGroupHelper().createReserveGroup(new GroupData("test1", null, null)); //if no existing group, Test will create it for modification
         }
 
         app.getGroupHelper().selectGroup();

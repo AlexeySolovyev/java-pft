@@ -2,12 +2,14 @@ package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
-        app.getNavigationHelper().goToContactPage();
+
+        app.getContactHelper().goToContactPage();
         app.getContactHelper().fillContactForm(new ContactData(
                 "First name1",
                 "Middle name1",
