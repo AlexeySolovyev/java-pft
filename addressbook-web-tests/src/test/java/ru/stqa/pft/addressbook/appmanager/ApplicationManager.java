@@ -13,7 +13,7 @@ public class ApplicationManager {
 
     public void init() {
         wd = new FirefoxDriver();
-        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         wd.get("https://araslan12-pc:4430/addressbook/");
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);
