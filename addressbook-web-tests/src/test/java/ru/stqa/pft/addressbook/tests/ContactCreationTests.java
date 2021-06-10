@@ -1,15 +1,15 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
-
-        app.getContactHelper().goToContactPage();
+        int before = app.getContactHelper().getContactCount();
+        app.getContactHelper().goToContactCreation();
         app.getContactHelper().fillContactForm(new ContactData(
                 "First name1",
                 "Middle name1",
@@ -33,5 +33,7 @@ public class ContactCreationTests extends TestBase {
         ), true);
         app.getContactHelper().submitContactCreation();
         app.getNavigationHelper().goToHomePage();
+        int after = app.getContactHelper().getContactCount();
+        Assert.assertEquals(after, before + 1);
     }
 }

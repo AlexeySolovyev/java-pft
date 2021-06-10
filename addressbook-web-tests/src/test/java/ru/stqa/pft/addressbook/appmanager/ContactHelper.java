@@ -5,7 +5,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends BaseHelper {
 
@@ -50,7 +49,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void submitContactModification() {
-        click(By.name("update"));
+        click(By.cssSelector("[value='Update']"));
     }
 
     public void deleteContact() {
@@ -61,12 +60,12 @@ public class ContactHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void goToContactPage() {
+    public void goToContactCreation() {
         click(By.linkText("add new"));
     }
 
     public void createReserveContact(ContactData contact) {
-        goToContactPage();
+        goToContactCreation();
         fillContactForm(new ContactData(
                 "First name1",
                 "Middle name1",
@@ -90,6 +89,10 @@ public class ContactHelper extends BaseHelper {
         ), true);
         submitContactCreation();
 
+    }
+
+    public int getContactCount() {
+       return wd.findElements(By.name("selected[]")).size();
     }
 }
 
