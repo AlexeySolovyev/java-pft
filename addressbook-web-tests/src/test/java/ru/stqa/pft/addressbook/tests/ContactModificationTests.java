@@ -9,8 +9,7 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
 
         app.getNavigationHelper().goToHomePage();
-
-        if (! app.getContactHelper().isThereContact()) {
+        if (! app.getContactHelper().isThereContact()) { //if there are no existing contact, Test will create it for modification
             app.getContactHelper().createReserveContact(new ContactData(
                     "Test",
                     "Test",

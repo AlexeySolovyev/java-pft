@@ -10,7 +10,7 @@ public class ContactDeletionTests extends TestBase {
 
         app.getNavigationHelper().goToHomePage();
 
-        if (! app.getContactHelper().isThereContact()) {
+        if (! app.getContactHelper().isThereContact()) { //if there are no existing contact, Test will create it for deleteion
             app.getContactHelper().createReserveContact(new ContactData(
                     "Test",
                     "Test",
