@@ -9,7 +9,7 @@ public class ContactDeletionTests extends TestBase {
     @Test (enabled = false)
     public void testContactDeletion() {
 
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
         if (! app.getContactHelper().isThereContact()) { //if there are no existing contact, Test will create it for deleteion
             app.getContactHelper().createReserveContact(new ContactData(
                     "Test",
@@ -32,11 +32,11 @@ public class ContactDeletionTests extends TestBase {
                     "Test",
                     "test1"));
         }
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
         int before = app.getContactHelper().getContactCount();
         app.getContactHelper().initContactModification();
         app.getContactHelper().deleteContact();
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
         int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after, before - 1);
     }

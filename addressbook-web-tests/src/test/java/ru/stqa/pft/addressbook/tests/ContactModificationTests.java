@@ -8,7 +8,7 @@ public class ContactModificationTests extends TestBase {
 
     @Test (enabled = false)
     public void testContactModification() {
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
         if (! app.getContactHelper().isThereContact()) { //if there are no existing contact, Test will create it for modification
             app.getContactHelper().createReserveContact(new ContactData(
                     "Test",
@@ -32,7 +32,7 @@ public class ContactModificationTests extends TestBase {
                     "test1"));
         }
 
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
         int before = app.getContactHelper().getContactCount();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData(
@@ -57,7 +57,7 @@ public class ContactModificationTests extends TestBase {
                 null
         ), false);
         app.getContactHelper().submitContactModification();
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
         int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after, before);
     }

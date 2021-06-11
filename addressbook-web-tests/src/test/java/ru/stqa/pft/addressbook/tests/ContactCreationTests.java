@@ -32,7 +32,7 @@ public class ContactCreationTests extends TestBase {
                 "test1"
         ), true);
         app.getContactHelper().submitContactCreation();
-        app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
         int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after, before + 1);
     }
