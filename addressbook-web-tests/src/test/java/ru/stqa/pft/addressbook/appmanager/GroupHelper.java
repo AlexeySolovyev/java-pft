@@ -32,6 +32,14 @@ public class GroupHelper extends BaseHelper {
         click(By.name("new"));
     }
 
+    public void modifyGroup(GroupData group, int index) {
+        selectGroup(index);
+        initGroupModoification();
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
+    }
+
     public void deleteSelectedGroup() {
         click(By.name("delete"));
     }

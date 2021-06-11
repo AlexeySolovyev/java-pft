@@ -19,7 +19,7 @@ public class GroupCreationTests extends TestBase {
         app.getGroupHelper().submitGroupCreation();
         app.getGroupHelper().returnToGroupPage();
         List<GroupData> after = app.getGroupHelper().getGroupList();
-        Assert.assertEquals(after.size(), before.size() + 1);// compare quantity after and before creation group
+        Assert.assertEquals(after.size(), before.size() + 1);
 
         group.setId(after.stream().max(Comparator.comparingInt(GroupData::getId)).get().getId());
         before.add(group);

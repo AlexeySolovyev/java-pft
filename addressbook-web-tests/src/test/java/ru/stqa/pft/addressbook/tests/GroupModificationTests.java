@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -9,24 +11,25 @@ import java.util.List;
 
 public class GroupModificationTests extends TestBase {
 
-    @Test
-    public void testGrpoupModification() {
+    @BeforeMethod
+    public void ensurePreconditions() {
         app.getNavigationHelper().gotoGroupPage();
         if (!app.getGroupHelper().isThereGroup()) {
-            app.getGroupHelper().createReserveGroup(new GroupData("test1", null, null)); //if no existing group, Test will create it for modification
+            app.getGroupHelper().createReserveGroup(new GroupData("test1", null, null));
         }
+    }
+
+    @Test
+    public void testGroupModification() {
         List<GroupData> before = app.getGroupHelper().getGroupList();
-        app.getGroupHelper().selectGroup(before.size() - 1); // can delete any group, not only the first one
-        app.getGroupHelper().initGroupModoification();
         GroupData group = new GroupData(before.get(before.size() - 1).getId(),"test1", "test2", "test3");
-        app.getGroupHelper().fillGroupForm(group);
-        app.getGroupHelper().submitGroupModification();
-        app.getGroupHelper().returnToGroupPage();
+        int index = before.size() - 1;
+        app.getGroupHelper().modifyGroup(group, index);
         List<GroupData> after = app.getGroupHelper().getGroupList();
         Assert.assertEquals(before.size(), after.size());
 
-        before.remove(before.size() - 1);
+        before.remove(index);
         before.add(group);
-        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); // convert from List to неупорядоченное множество
+        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
 }
